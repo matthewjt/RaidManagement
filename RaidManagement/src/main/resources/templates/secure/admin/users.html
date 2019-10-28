@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	layout:decorator="layout">
+	
+  <head>
+  	<title>AudiobookRss</title>
+  </head>
+
+<body>
+   	<!--                    -->
+   	<!-- Body Content Begin -->
+   	<!--                    -->
+	<div layout:fragment="content">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-2 font-weight-bold">Name</div>
+				<div class="col-4 font-weight-bold">Roles</div>
+				<div class="col-4 font-weight-bold"></div>
+			</div>
+			<div class="row" th:each="user : ${allUsers}">
+				<div class="col-2" th:text="${user.userName}">userName</div>
+				<div class="col-4" th:text="${user.roles}">Roles...</div>
+				<div class="col-4">
+					<a class="btn btn-sm btn-warning" th:href="@{/secure/admin/user(userId=${user.userName})}">Edit</a>
+				</div>					
+			</div>
+			<br />
+			<div>
+				<a  class="btn btn-success" th:href="@{/secure/admin/user}">Create</a>
+			</div>
+			
+		</div>
+
+	</div>
+   	<!--                    -->
+   	<!-- Body Content End   -->
+   	<!--                    -->
+   	
+  </body>
+</html>

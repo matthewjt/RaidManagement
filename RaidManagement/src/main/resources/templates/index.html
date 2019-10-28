@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	layout:decorate="~{layout}">
+	
+  <head>
+  	<title>Audiobook RSS</title>
+  </head>
+
+<body>
+  	<!-- Header Center Content -->
+	<div layout:fragment="header-center">
+		Welcome!
+	</div>
+	
+   	<!--                    -->
+   	<!-- Body Content Begin -->
+   	<!--                    -->
+	<div layout:fragment="content">
+		<div class="col-10 offset-2">
+			<p sec:authorize="!isAuthenticated()">
+				Please <a href="/login" th:href="@{/secure}">login</a> user functions to access
+			</p>
+	
+			<p>
+				Welcome to Audiobook RSS!
+			</p>
+		</div>
+
+	</div>
+   	<!--                    -->
+   	<!-- Body Content End   -->
+   	<!--                    -->
+   	
+  </body>
+</html>

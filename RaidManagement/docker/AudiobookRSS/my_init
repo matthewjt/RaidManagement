@@ -1,0 +1,34 @@
+#!/bin/bash -eux
+
+if [ ! -d /jar/log ]; then
+	mkdir /jar/log
+fi
+
+echo "Initializing Services" > /jar/log/application.log
+
+if [ -f /jar/services_latest.jar ]; then
+        echo "     new JAR found.  Updating" >> /jar/log/application.log
+	if [ -f /jar/services.jar ]; then
+		echo "     backing up old services.jar to services_bkup.jar." >> /jar/log/application.log
+	        mv -v /jar/services.jar /jar/services_bkup.jar >> /jar/log/application.log
+	fi
+        mv -v /jar/services_latest.jar /jar/services.jar >> /jar/log/application.log
+fi
+
+if [ ! -f /jar/services.jar ]; then
+        echo "     no initial JAR found (services.jar).  Exiting" >> /jar/log/application.log
+	exit 0
+fi
+
+if [ ! -f /jar/jvm_args.properties ]; then
+	echo "     no initial jvm_args found.  Creating default." >> /jar/log/application.log
+	cp -v /jvm_args.properties /jar/jvm_args.properties >> /jar/log/application.log
+fi
+
+echo "Starting services" >> /jar/log/application.log
+
+cd /jar
+
+java $(tr '\r' ' ' < /jar/jvm_args.properties) -jar services.jar
+
+

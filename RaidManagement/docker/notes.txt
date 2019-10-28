@@ -1,0 +1,9 @@
+docker build -t matthewjt/audiobookrss:0.0.2 .
+
+docker create --name audiobookrss -p 80:80 -v c:/Shared/temp/config:/config -v c:/Shared/temp/books:/books -t matthewjt/audiobookrss:0.0.1
+
+docker push matthewjt/audiobookrss:0.0.2
+
+docker tag matthewjt/audiobookrss:0.0.2 matthewjt/audiobookrss:latest
+
+docker push matthewjt/audiobookrss:latest

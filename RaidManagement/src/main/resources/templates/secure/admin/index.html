@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	layout:decorator="layout">
+	
+  <head>
+  	<title>AudiobookRss</title>
+  </head>
+
+<body>
+   	<!--                    -->
+   	<!-- Body Content Begin -->
+   	<!--                    -->
+	<div layout:fragment="content">
+
+		<div class="container">
+			<a th:href="@{/secure/admin/users}">User Administration</a>
+		</div>
+		<div class="container">
+			<a th:href="@{/secure/admin/scan}">Library Scan</a>
+		</div>
+		<div class="container">
+			<a th:href="@{/secure/admin/configuration}">Library Configuration</a>
+		</div>
+
+	</div>
+   	<!--                    -->
+   	<!-- Body Content End   -->
+   	<!--                    -->
+   	
+  </body>
+</html>

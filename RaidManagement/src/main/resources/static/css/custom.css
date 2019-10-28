@@ -1,0 +1,112 @@
+.table td, .table th {
+    padding: .2rem;
+}
+
+.btn-success {
+	    background-color: #28a745;
+}
+
+a.navbar-brand {
+	color: black;
+	font-weight: bold;
+}
+
+.btn-sm {
+    padding: 0.1rem 0.2rem;
+}
+
+img.logo {
+	max-height: 50px;
+		object-fit: contain;
+}
+
+
+img.cover-art {
+	max-height: 200px;
+		object-fit: contain;
+}
+
+@media screen and (max-width: 575px) {
+	
+	td.truncate-md, th.truncate-md {
+	  white-space: nowrap;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	  max-width: 150px;
+	  font-size: small;
+	}
+	
+	.container-fluid {
+		padding-right: 5px;
+		padding-left: 5px;
+	}
+	
+	img.cover-art {
+		max-height: 100px;
+		object-fit: contain;
+	}
+	
+	img.logo {
+	max-height: 25px;
+		object-fit: contain;
+}
+	
+}
+
+.ab-bg-darkgreen {
+	background-color: #005b00 ;	
+}
+
+.ab-bg-lightgreen {
+	background-color: #bfffbf ;	
+}
+
+.panel-body {
+	background-color: #9fff9f ;	
+}
+
+.panel-heading {
+	background-color: #6fff6f ;	
+	font-size: large;
+	text-align: center;
+	font-weight: bold;
+}
+
+body {
+	background-color: #bfffbf ;	
+}
+
+.nav-item {
+	background-color: #bfffbf;
+	border-radius: .25rem;
+	margin-right: 1px;
+	margin-bottom: 1px;
+}
+
+.nav-item.active {
+	background-color: #4aff4a;
+}
+
+nav.navbar.active {
+  background: #bfffbf;
+}
+
+@media (max-width: 767.98px) {
+	nav.navbar {
+		background-color: #005b00
+	}
+}
+
+/* /* If the screen size is 601px wide or more, set the font-size of <div> to 80px */ */
+/* @media screen and (min-width: 576px) { */
+/*   div { */
+/*     font-size: 20px; */
+/*   } */
+/* } */
+
+/* /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */ */
+/* @media screen and (max-width: 575px) { */
+/*   div { */
+/*     font-size: 34px; */
+/*   } */
+/* } */

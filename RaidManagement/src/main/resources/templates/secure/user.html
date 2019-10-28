@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	layout:decorator="layout">
+	
+  <head>
+  	<title>AudiobookRss</title>
+  </head>
+
+<body>
+   	<!--                    -->
+   	<!-- Body Content Begin -->
+   	<!--                    -->
+	<div layout:fragment="content">
+
+		<div class="row col-12">
+
+			<form class="form col-12" action="#" th:action="@{/secure/user}" method="post">
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label" >User name:</label>
+					<div class="col-sm-3">
+						<p class="col-form-label" th:text="${user.userName}">UserName</p>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="oldUserPassword" class="col-sm-2 col-form-label">Old PW:</label>
+					<div class="col-sm-3">
+						<input type="password" class="form-control" id="oldUserPassword" name="oldUserPassword" placeholder="old password"/>
+					</div>
+					<label for="userPassword" class="col-sm-2 col-form-label">New PW:</label>
+					<div class="col-sm-3">
+						<input type="password" class="form-control" id="userPassword" name="userPassword" placeholder="Password"/>
+					</div>
+				</div>
+				<div class="form-group row d-flex justify-content-center">
+						<button type="submit" class="btn btn-success">Submit</button>
+						<button type="reset" class="btn btn-danger">Reset</button>
+				</div>
+			</form>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<div class="panel">
+					<div class="panel-heading">
+					Roles
+					</div>
+					<div class="panel-body">
+						<div class="col-sm-2 text-left">
+							<dl>
+								<dd>
+									<ul>
+										<li th:each="role : ${user.roles}" th:text="${role}">Role...</li>
+									</ul>
+								</dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-6 row panel">
+				<div class="panel-heading col-12">
+				Personal User Feed
+				</div>
+				<div class="panel-body col-12">
+					<a class="col-6" th:href="@{'/stream/book/user_' + ${user.userName} + '/userFeed.xml'}">User Book Feed</a>
+					<img class="" th:src="@{'/stream/book/user_' + ${user.userName} + '/qr?feed=userFeed.xml'}" />
+				</div>
+			</div>
+		</div>
+		
+		<br />
+
+		<div class="row" id="books-in-feed-div">
+			<div class="col-sm-12">
+				<div class="panel">
+					<div class="panel-heading">
+						Books in User Feed
+					</div>
+					<div class="panel-body">
+						<div th:each="book : ${booksInFeed}" >
+							<div th:id="@{'removeBookToFeedLink_' + ${book.bookKey}}"
+							>
+								<a href="javascript:return void(0);" class="btn-sm btn-danger" th:onclick="@{'removeBookToFeed(\'' + ${book.bookKey} + '\', \'' + 'removeBookToFeedLink_' + ${book.bookKey} + '\');'}" onclick="return void(0);">Remove</a>
+								-
+								<font class="font-weight-bold">[[${book.name}]]</font>
+								- 
+								[[${book.series}]]
+								[[${book.seriesIndex!=null and book.seriesIndex!='0'? '(' + book.seriesIndex + ')': ''}]]
+								- 
+								<u>[[${book.author}]]</u>
+							</div>
+						</div>
+						<br />
+						<div class=" d-flex justify-content-center">
+							<a href="javascript:return void(0);" class="btn-sm btn-danger" onclick="removeAllBooksFromFeed(); document.location.reload(); " >Remove All Books From Feed</a>
+						</div>
+
+					</div>
+					<div class="panel-footer">
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+   	<!--                    -->
+   	<!-- Body Content End   -->
+   	<!--                    -->
+   	
+  </body>
+</html>

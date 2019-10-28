@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	layout:decorator="layout">
+	
+  <head>
+  	<title>Audiobook RSS</title>
+  </head>
+
+<body>
+   	<!--                    -->
+   	<!-- Body Content Begin -->
+   	<!--                    -->
+	<div layout:fragment="content">
+
+		<!-- 
+			pageStart - ${pageStart} - The page you're currently on
+			colName - ${colName} - The name of the column you're sorting by
+			sortColumn - ${currentColumnName} - The name of the currently sorted column
+		 -->
+		<div th:fragment="header_link">
+			<a href="#"
+				th:href="@{/secure/browse(pageStart=1,sortColumn=${colName}, sortDirection=${colName.equals(sortColumn)?(sortDirection.equalsIgnoreCase('ASC')?'DESC':'ASC'):'ASC'},filter=${filter})}">
+				<b th:text="${colName}" th:remove="tag"></b>
+				<img th:if="${colName.equals(sortColumn) &amp;&amp; sortDirection.equals('ASC')}" src="" alt="Change Sort To Descending" height="15px" th:src="@{/images/ArrowPointingUp.jpg}"></img>
+				<img th:if="${colName.equals(sortColumn) &amp;&amp; sortDirection.equals('DESC')}" src="" alt="Change Sort To Ascending" height="15px" th:src="@{/images/ArrowPointingDown.jpg}"></img>
+			</a>
+		</div>
+
+	</div>
+   	<!--                    -->
+   	<!-- Body Content End   -->
+   	<!--                    -->
+   	
+  </body>
+</html>

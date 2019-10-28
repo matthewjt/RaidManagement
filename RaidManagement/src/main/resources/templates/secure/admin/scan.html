@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.springframework.org/security/tags" layout:decorator="layout">
+
+<head>
+<title>AudiobookRss</title>
+</head>
+
+<body>
+	<!--                    -->
+	<!-- Body Content Begin -->
+	<!--                    -->
+	<div layout:fragment="content">
+
+		<div id="progress-div">
+			<div th:fragment="progress-div">
+				
+				<div th:text="${T(com.tomasov.audiobookrss.scan.ScannerProgress).currentProcess}">
+				</div>
+				
+				<div th:if="${T(com.tomasov.audiobookrss.scan.ScannerProgress).total > 0}">
+					[[${T(com.tomasov.audiobookrss.scan.ScannerProgress).current}]] of [[${T(com.tomasov.audiobookrss.scan.ScannerProgress).total}]]
+				</div>
+				
+				<script th:inline="javascript" type="text/javascript">
+				/*<![CDATA[*/	
+				
+					var doneProcessing = /*[[${T(com.tomasov.audiobookrss.scan.ScannerProgress).currentProcess != null and T(com.tomasov.audiobookrss.scan.ScannerProgress).currentProcess == 'Completed Processing Library'}]]*/ ;
+					
+					if (!doneProcessing)
+					{
+						setTimeout(partialGet(page + '/refreshScan', 'progress-div'), 300);
+					}
+					
+				/*]]>*/
+				</script>
+			
+			</div>
+		</div>
+		
+		
+		<br />
+		<div>
+			<form action="#" th:action="@{/secure/admin/scan}" method="post">
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+				<table>
+					<tr>
+						<td><input type="submit" class="btn btn-success" value="Start Book Scan" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<br />
+		<div>
+			<form action="#" th:action="@{/secure/admin/scanapi}" method="post">
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+				<table>
+					<tr>
+						<td><input type="submit" class="btn btn-success" value="Start Google Books Scan" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+	</div>
+	<!--                    -->
+	<!-- Body Content End   -->
+	<!--                    -->
+
+</body>
+</html>

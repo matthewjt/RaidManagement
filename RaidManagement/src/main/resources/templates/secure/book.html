@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.w3.org/1999/xhtml" 
+	xmlns:sec="http://www.springframework.org/security/tags" 
+	layout:decorate="~{layout}">
+	
+  <head>
+  	<title>AudiobookRss</title>
+  </head>
+
+<body>
+   	<!--                    -->
+   	<!-- Body Content Begin -->
+   	<!--                    -->
+	<div layout:fragment="content" th:with="currentUser = ${@userSessionHelper.getCurrentUser()}">
+
+	<script type="text/javascript">
+// 		$(document).ready(function() {
+		
+// 			$(".comment").shorten();
+		
+// 		});
+	</script>
+
+	<div>
+		<div class="row">
+				<img class="img col-4 cover-art" th:if="${book.hasExternalArt()}" th:src="${book.externalArt}" alt="external thumbnail" />
+				<img class="img col-4 cover-art" th:if="${book.hasSeriesArt()}" th:src="@{__${'/stream/book/' + book.bookKey + '/seriesAlbumArtThumbnail.jpg'}__}" alt="series thumbnail"/>
+				<img class="img col-4 cover-art" th:if="${book.hasAlbumArt()}" th:src="@{__${'/stream/book/' + book.bookKey + '/albumArtThumbnail.jpg'}__}" alt="cover art" />
+		</div>
+		
+		<br />
+		
+		<div class="row">
+			<div class="panel col-12" th:with="inFeed = ${T(com.tomasov.audiobookrss.user.UserPreferenceManager).isBookKeyInFeed(currentUser,book.bookKey)}">
+				<div class="panel-heading">
+				Book Utility
+				</div>
+				<div class="panel-body">
+					<div class="row col-11 offset-1">
+						Feed URL: &nbsp;<a href="#" th:href="@{__${'/stream/book/' + book.bookKey + '.xml'}__}" title="name" th:title="${book.name}">Book Feed</a>
+					</div>
+					<div class="row col-11 offset-1" th:if="${book.series != null}">
+						Series Feed URL: &nbsp;<a href="#" th:href="@{__${'/stream/book/series.xml?seriesName=' + book.series}__}" title="name" th:title="${book.series}" th:text="${book.series}">Series Feed</a>
+					</div>
+					<div class="row col-11 offset-1">
+						Download URL: &nbsp;<a href="#" th:href="@{__${'/stream/book/zip/' + book.bookKey + '.zip'}__}" title="name" th:title="${book.series}" th:text="${book.name}">Series Feed</a>
+					</div>
+					<br />
+					<div class="d-flex flex-row justify-content-center">
+						<input type="button"
+							th:style="${inFeed? '' : 'display:none'}"
+							class="btn btn-danger"
+						 	th:id="${'removeBookToFeedLink_' + book.bookKey}" 
+						 	th:onclick="'removeBookToFeed(\'' + ${book.bookKey} + '\', \'removeBookToFeedLink_' + ${book.bookKey} + '\', \'addBookToFeedLink_' + ${book.bookKey} + '\');'"
+						 	value="Remove From User Feed"
+						 	 />
+						<input type="button"
+							th:style="${inFeed?'display:none' : ''}"
+							class="btn btn-success"
+						 	th:id="${'addBookToFeedLink_' + book.bookKey}" 
+						 	th:onclick="'addBookToFeed(\'' + ${book.bookKey} + '\', \'addBookToFeedLink_' + ${book.bookKey} + '\', \'removeBookToFeedLink_' + ${book.bookKey} + '\');'" 
+						 	value="Add To User Feed"
+						 	/>
+				 	</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		<br />
+		
+		<div class="row">
+			<div class="panel col-12">
+				<div class="panel-heading">
+				Book Information
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-1 font-weight-bold">Name:</div>
+						<div class="col-md-5 col-sm-11" th:text="${book.name}"></div>
+						
+						<div class="col-1 font-weight-bold">Author:</div>
+						<div class="col-md-5 col-sm-11" th:text="${book.author}"></div>
+						
+						<div class="col-1 font-weight-bold" th:if="${book.series!=null}">Series:</div>
+						<div class="col-md-5 col-sm-11" th:text="${book.series}" th:if="${book.series!=null}"></div>
+						
+						<div class="col-1 font-weight-bold" th:if="${book.seriesIndex!=null}">Index:</div>
+						<div class="col-md-5 col-sm-11" th:text="${book.seriesIndex}" th:if="${book.seriesIndex!=null}"></div>
+						
+						<div class="col-1 font-weight-bold">Added:</div>
+						<div class="col-md-5 col-sm-11">[[${book.added}]]</div>
+						
+						<div class="col-12 font-weight-bold" th:if="${book?.externalRepositoryInformation?.description != null}">Description:</div>
+						<div class="col-12" th:if="${book?.externalRepositoryInformation?.description != null}" th:text="${book?.externalRepositoryInformation?.description}"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		</div>
+	</div>
+
+   	<!--                    -->
+   	<!-- Body Content End   -->
+   	<!--                    -->
+   	
+  </body>
+</html>
