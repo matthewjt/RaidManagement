@@ -1,0 +1,49 @@
+.spad {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.header-section {
+    padding: 8px 0;
+}
+
+body {
+	background-color: #c9c9c9;
+}
+
+.feature-item .fi-content {
+	padding-top: 10px;
+	bottom: auto;
+}
+
+.raid {
+	background-color: #c9c9c9;
+	padding: 5px;
+	--font-weight: bold;
+	color: black;
+	margin-top: 10px;
+}
+
+.raid a {
+	color: black;
+}
+
+.raid-signed-up a {
+	color: blue;
+}
+
+.raid-not-signed-up a {
+	color: red;
+}
+
+.raid-in-raid a {
+	color: green;
+}
+
+.raid-benched-raid a {
+	color: orange;
+}
+
+hr {
+	border-top: 2px solid white;
+}
