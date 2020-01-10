@@ -11,19 +11,19 @@
 	<meta name="keywords" content="zero sunders, game, world of warcraft, wow, classic">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->   
-	<link href="img/favicon.png" rel="shortcut icon"/>
+	<link th:href="@{/img/favicon.png}" rel="shortcut icon"/>
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="css/owl.carousel.css"/>
-	<link rel="stylesheet" href="css/style.css"/>
-	<link rel="stylesheet" href="css/animate.css"/>
-	<link rel="stylesheet" href="css/calendar.css"/>
-	<link rel="stylesheet" href="css/custom.css"/>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"/>
+	<link rel="stylesheet" th:href="@{/css/owl.carousel.css}"/>
+	<link rel="stylesheet" th:href="@{/css/style.css}"/>
+	<link rel="stylesheet" th:href="@{/css/animate.css}"/>
+	<link rel="stylesheet" th:href="@{/css/calendar.css}"/>
+	<link rel="stylesheet" th:href="@{/css/custom.css}"/>
 	
 	<!--  JQuery needed to support Bootstrap DatePicker -->
 <script src="" th:src="@{/webjars/jquery/3.4.0/jquery.min.js}"></script>
@@ -56,11 +56,11 @@
 		<div class="container">
 			<!-- logo -->
 			<a class="site-logo" href="index.html">
-				<img src="img/logo.png" alt="" height="60px">
+				<img th:src="@{/img/logo.png}" alt="" height="60px">
 			</a>
 			<div class="user-panel">
 				<a href="#">Login</a>  /  <a href="#">Register</a>
-				<a href="secure/user.html">USER_NAME</a>  /  <a href="/logout">Logout</a>
+				<a href="secure/user.html">USER_NAME</a>  /  <a th:href="@{/logout}">Logout</a>
 			</div>
 			<!-- responsive -->
 			<div class="nav-switch">
@@ -69,9 +69,9 @@
 			<!-- site menu -->
 			<nav class="main-menu">
 				<ul>
-					<li><a href="secure/index.html">Home</a></li>
-					<li><a href="secure/raids.html">Raids</a></li>
-					<li><a href="secure/admin/index.html">Officer</a></li>
+					<li><a th:href="@{/}">Home</a></li>
+					<li><a th:href="@{/raids}">Raids</a></li>
+					<li><a th:href="@{/secure/admin}">Officer</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -83,7 +83,7 @@
 		<div class="ln-title">Latest News</div>
 		<div class="news-ticker">
 			<div class="news-ticker-contant">
-				<div class="nt-item"><span class="new">new</span>Raid for 2020-12-31 is open for sign up!</div>
+				<div class="nt-item"><span class="new rounded">new</span>Raid for 2020-12-31 is open for sign up!</div>
 <!-- 				<div class="nt-item"><span class="strategy">strategy</span>Isum dolor sit amet, consectetur adipiscing elit. </div> -->
 <!-- 				<div class="nt-item"><span class="racing">racing</span>Isum dolor sit amet, consectetur adipiscing elit. </div> -->
 			</div>
@@ -118,9 +118,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 	<!--====== Javascripts & Jquery ======-->
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.marquee.min.js"></script>
-	<script src="js/main.js"></script>
+	<script th:src="@{/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/js/jquery.marquee.min.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
 	
 	
     </body>

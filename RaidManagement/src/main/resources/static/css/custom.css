@@ -44,6 +44,26 @@ body {
 	color: orange;
 }
 
+.cata.raid-name {
+	background: black;
+}
+
+.cata.raid-signed-up {
+	background: blue;
+}
+
+.cata.raid-not-signed-up {
+	background: red;
+}
+
+.cata.raid-in-raid {
+	background: green;
+}
+
+.cata.raid-benched {
+	background: orange;
+}
+
 hr {
 	border-top: 2px solid white;
 }

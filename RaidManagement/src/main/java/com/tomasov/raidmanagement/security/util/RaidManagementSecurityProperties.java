@@ -8,7 +8,7 @@ public class RaidManagementSecurityProperties {
 	
 	public static final String adminUserId = "admin";
 	
-	@Value("${com.tomasov.raidmanagement.security.adminUserPassword}")
+	@Value("${com.tomasov.raidmanagement.security.adminUserPassword:matt}")
 	private String adminUserPassword;
 	
 	public static final String userId = "user";

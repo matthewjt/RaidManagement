@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" 
+	layout:decorate="~{layout}">
+	
+<body>
+	
+   	<!--                    -->
+   	<!-- Body Content Begin -->
+   	<!--                    -->
+	<section layout:fragment="content" class="feature-section spad">
+	<div class="container">
+			<div class="row border border-dark rounded p-4 bg-secondary">
+				<div class="col-lg-12 col-md-12 p-0">
+					<span class="cata raid-name rounded">2019-12-12 Molten Core</span>
+				</div>
+				
+				<!-- Raid signup -->
+				<div class="d-flex flex-row pt-1 col-12">
+						<div class="col-10 ml-1 font-weight-bold text-danger bg-dark rounded">You are not signed up for this raid.</div>
+				</div>
+				<div class="w-100"></div>
+				<div class="row pt-1 col-12">
+						<select class="col-2 offset-1 form-control" name="characterName">
+							<option value="Mattiam">Mattiam</option>
+							<option value="Ironmatt">Ironmatt</option>
+						</select>
+						<input type="button" class="ml-2 btn btn-success" value="Sign-Up"></input>
+				</div>
+				
+				<!-- In Raid -->
+				<div class="col-12 pt-1 mt-1">
+					<div class="d-flex flex-row">
+						<span class="cata raid-in-raid rounded">In Raid</span>
+					</div>	
+					<table class="mt-2 col-11 offset-1 table-sm table-striped table-dark table-hover">
+<!-- 						<thead> -->
+<!-- 							<tr> -->
+<!-- 								<th scope="col">#</th> -->
+<!-- 								<th scope="col">First</th> -->
+<!-- 								<th scope="col">Last</th> -->
+<!-- 								<th scope="col">Handle</th> -->
+<!-- 							</tr> -->
+<!-- 						</thead> -->
+						<tbody>
+							<tr>
+								<td scope="row" width="0%"><a href="#" title="Move to in Signed Up" onclick="confirm('Are you sure you want to demote to signed-up?')"><span class="fa fa-arrow-down text-primary"></span></a></td>
+<!-- 								<td scope="row" width="0%"><a href="#" title="Move to in Signed Up"><span class="fa fa-plus text-success"></span></a></td> -->
+								<td width="20%">Mattiam</td>
+								<td width="20%">Tank</td>
+								<td width="100%">Warrior</td>
+							</tr>
+							<tr>
+								<td scope="row" width="0%"><a href="#" title="Move to in Signed Up"><span class="fa fa-arrow-down text-primary"></span></a></td>
+<!-- 								<td scope="row" width="0%"><a href="#" title="Move to in Signed Up"><span class="fa fa-plus text-success"></span></a></td> -->
+								<td>Thorce</t>
+								<td>Healer</td>
+								<td>Paladin</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<!-- Benched -->
+				<div class="col-12 pt-1 mt-1">
+					<div class="d-flex flex-row">
+						<span class="cata raid-benched rounded">Benched</span>
+					</div>	
+					<table class="mt-2 col-11 offset-1 table-sm table-striped table-dark table-hover">
+						<tbody>
+							<tr>
+								<td scope="row" width="0%"><a href="#" title="Move to in Signed Up"><span class="fa fa-arrow-down text-primary"></span></a></td>
+								<td width="20%">TightCore</td>
+								<td width="20%">DPS</td>
+								<td width="100%">Hunter</td>
+							</tr>
+						</tbody>
+					</table>			
+				</div>
+				
+				<!-- Signed Up -->
+				<div class="col-12 pt-1 mt-1">
+					<div class="d-flex flex-row">
+						<span class="cata raid-signed-up rounded">Signed Up</span>
+					</div>	
+					<table class="mt-2 col-11 offset-1 table-sm table-striped table-dark table-hover">
+						<tbody>
+							<tr>
+								<td scope="row" width="0%"><a href="#" title="Promote to in raid"><span class="fa fa-arrow-up text-success"></span></a></td>
+								<td width="0%"><a href="#" title="Move To Bench"><span class="fa fa-hotel text-warning"></span></a></td>
+								<td width="20%">Mattiam</td>
+								<td width="20%">Tank</td>
+								<td width="100%">Warrior</td>
+							</tr>
+							<tr>
+								<td scope="row"><a href="#" title="Promote to in raid"><span class="fa fa-arrow-up text-success"></span></a></td>
+								<td><a href="#" title="Move To Bench"><span class="fa fa-hotel text-warning"></span></a></td>
+								<td>Thorce</td>
+								<td>Healer</td>
+								<td>Paladin</td>
+							</tr>
+						</tbody>
+					</table>			
+				</div>
+
+			</div>
+		</div>
+	</section>
+   	<!--                    -->
+   	<!-- Body Content End   -->
+   	<!--                    -->
+   	
+  </body>
+</html>
